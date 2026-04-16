@@ -8,14 +8,14 @@ Run this locally (requires internet access):
     python fetch_market_caps.py
 
 It will:
-  1. Read companies.csv to find all public companies with a stock_ticker.
+  1. Read ai-companies.csv to find all public companies with a stock_ticker.
   2. For each, fetch historical market cap at 6-month intervals from
      2015-01-01 to today.
   3. Remove any existing market_cap_snapshot rows for those companies
      in valuations.csv (so re-running is safe / idempotent).
   4. Append the new snapshot rows and save.
 
-Requires companies.csv and valuations.csv to be in data/ at the repo root.
+Requires ai-companies.csv and valuations.csv to be in data/ at the repo root.
 """
 
 import csv
@@ -31,7 +31,7 @@ except ImportError:
 
 DIR             = Path(__file__).parent
 REPO_ROOT       = DIR.parent.parent         # src/gather -> src -> repo root
-COMPANIES_FILE  = REPO_ROOT / 'data' / 'companies.csv'
+COMPANIES_FILE  = REPO_ROOT / 'data' / 'ai-companies.csv'
 VALUATIONS_FILE = REPO_ROOT / 'data' / 'valuations.csv'
 DB_PATH         = REPO_ROOT / 'data' / 'ai_companies.db'
 
@@ -86,7 +86,7 @@ def fetch_market_caps():
     ]
 
     if not public_cos:
-        print("No public companies with tickers found in companies.csv.")
+        print("No public companies with tickers found in ai-companies.csv.")
         return
 
     print(f"Found {len(public_cos)} public companies: "

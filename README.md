@@ -9,7 +9,7 @@ company-data/
 ├── README.md
 ├── .gitignore
 ├── data/
-│   ├── companies.csv          # source of truth: one row per company
+│   ├── ai-companies.csv       # source of truth: one row per company
 |   ├── valuations.csv         # source of truth: one row per valuation event
 │   └── ai_companies.db        # derived — rebuilt by csv_to_sqlite.py, not tracked in git
 └── src/

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-csv_to_sqlite.py — build ai_companies.db from companies.csv and valuations.csv.
+csv_to_sqlite.py — build ai_companies.db from ai-companies.csv and valuations.csv.
 
 Usage:
     python csv_to_sqlite.py
@@ -21,7 +21,7 @@ from pathlib import Path
 
 DIR            = Path(__file__).parent
 REPO_ROOT      = DIR.parent.parent          # src/gather -> src -> repo root
-COMPANIES_CSV  = REPO_ROOT / 'data' / 'companies.csv'
+COMPANIES_CSV  = REPO_ROOT / 'data' / 'ai-companies.csv'
 VALUATIONS_CSV = REPO_ROOT / 'data' / 'valuations.csv'
 DB_PATH        = REPO_ROOT / 'data' / 'ai_companies.db'
 

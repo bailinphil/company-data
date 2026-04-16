@@ -19,7 +19,7 @@ from pathlib import Path
 
 DIR       = Path(__file__).parent
 REPO_ROOT = DIR.parent.parent          # src/gather -> src -> repo root
-COMPANIES_FILE  = REPO_ROOT / 'data' / 'companies.csv'
+COMPANIES_FILE  = REPO_ROOT / 'data' / 'ai-companies.csv'
 VALUATIONS_FILE = REPO_ROOT / 'data' / 'valuations.csv'
 
 COMPANIES_FIELDS = [
@@ -174,7 +174,7 @@ def add_company():
     if confirm("Save this company?"):
         companies.append(row)
         write_csv(COMPANIES_FILE, COMPANIES_FIELDS, companies)
-        print(f"✓ Saved '{row['company_id']}' to companies.csv")
+        print(f"✓ Saved '{row['company_id']}' to ai-companies.csv")
     else:
         print("Cancelled.")
 
@@ -192,7 +192,7 @@ def add_valuation():
     while True:
         cid = ask("company_id", required=True)
         if cid not in valid_ids:
-            print(f"    ✗ '{cid}' not found in companies.csv. "
+            print(f"    ✗ '{cid}' not found in ai-companies.csv. "
                   f"Add the company first.")
             continue
         break
