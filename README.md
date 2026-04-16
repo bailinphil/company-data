@@ -9,11 +9,11 @@ company-data/
 ├── README.md
 ├── .gitignore
 ├── data/
+│   ├── companies.csv          # source of truth: one row per company
+|   ├── valuations.csv         # source of truth: one row per valuation event
 │   └── ai_companies.db        # derived — rebuilt by csv_to_sqlite.py, not tracked in git
 └── src/
     └── gather/                # data collection and maintenance
-        ├── companies.csv      # source of truth: one row per company
-        ├── valuations.csv     # source of truth: one row per valuation event
         ├── add_company.py     # interactive CLI for adding/validating data
         ├── csv_to_sqlite.py   # builds data/ai_companies.db from the CSVs
         └── fetch_market_caps.py  # populates public company market cap history
@@ -114,3 +114,49 @@ Planned additions: more US application-layer companies, ByteDance/Doubao, MiniMa
 This dataset was built to support a classroom exercise asking students: *do the people making decisions at these companies share my values? Who should I trust?*
 
 The `gov_contract_notes`, `regulatory_actions`, `ceo_wikipedia_url`, and `founder_wikipedia_urls` fields are specifically designed to support that question. The Wikipedia links are a starting point, not an endpoint.
+
+---
+
+## Design decisions and context for contributors
+
+This section records the reasoning behind non-obvious choices in the schema and tooling, so that future contributors — human or AI — don't have to reconstruct it.
+
+### Why CSVs as source of truth, not SQLite directly
+
+The CSVs are human-readable, git-diffable, and editable without any tooling. A change to a company's `gov_contract_notes` shows up as a clear line diff in a pull request. The same change in a SQLite binary is invisible to version control. SQLite is a much better query and serving layer, so we use both: edit in CSV, query and serve from SQLite. `csv_to_sqlite.py` is the bridge and is safe to re-run at any time — it drops and recreates both tables on every run.
+
+### Why the `data/` directory is not in `src/`
+
+All of the data for this project is not executable code, but may be written to or read by tools. See the directory listing above for additional details about which files are considered the source of truth and which are derived.
+
+### Why the valuations table is separate
+
+Two reasons: First, public and private companies have fundamentally different valuation cadences: public companies have a market cap that changes every trading day (we snapshot every 6 months); private companies only have a known valuation at funding round announcements, which may be years apart. Putting both in one table with a `date` column handles this naturally. Second, it makes time-series visualization straightforward — the entire history of any company's valuation is just `SELECT * FROM valuations WHERE company_id = ?` ordered by date.
+
+### Why revenue and profit/loss are snapshot columns, not a time series
+
+Revenue over time for companies like Google or Microsoft reflects enormous non-AI factors — advertising cycles, enterprise software contracts, the COVID-19 pandemic — that would mislead students trying to understand the AI industry specifically. A single 2025 snapshot is more honest about what we actually know and care about. Private company revenue is almost never disclosed, so a time series would be nearly empty anyway.
+
+### The `CN (structural)` convention
+
+Several Chinese companies have no disclosed government contracts but are subject to China's National Intelligence Law (2017), which compels cooperation with state intelligence on request. This is qualitatively different from a company like Palantir that has explicit, disclosed DoD contracts — it's a legal environment, not a transaction. We represent this as `CN (structural)` in the `gov_contracts` field rather than leaving it blank (which would be misleading) or marking it as a regular contract (which would be inaccurate). The `gov_contract_notes` field carries the explanation.
+
+### Why `gov_contracts` replaced a simple `us_gov_contracts` boolean
+
+The original boolean was US-centric and obscured important distinctions. A UAE government research institute (TII) *is* the government — there's no contractor/client relationship to describe. An Israeli company may have structural ties to military intelligence through its founders' backgrounds rather than any formal contract. A French company may have explicit Ministry of Defence contracts that carry very different human rights implications than the same arrangement in Saudi Arabia. The free-text `gov_contract_notes` field is where the real teaching content lives; `gov_contracts` is just a queryable index into it.
+
+### The `data_confidence` field
+
+Sources for private company valuations vary enormously in reliability. A valuation from a company's own press release about a funding round is `high`. A valuation inferred from a journalist's report citing "people familiar with the matter" is `medium`. A valuation from an aggregator article with no primary source is `low`. This field exists so that visualizations can communicate uncertainty honestly — a `low` confidence bubble should probably look different from a `high` confidence one.
+
+### The start date of 2015 for market cap history
+
+The canonical starting point for the modern AI era is usually the 2017 "Attention Is All You Need" paper (the Transformer architecture underlying nearly all current LLMs), or the 2022 public release of ChatGPT. We chose 2015 as the history start date to capture the pre-Transformer context — DeepMind was founded in 2010, OpenAI in 2015, and Nvidia's GPU dominance in ML was already visible by 2013–2015. This gives students a sense of how long the groundwork was being laid before the public noticed. The framing "AI history starts around 2015" is a pedagogical convenience, not a claim that nothing happened before then.
+
+### The `add_company.py` script
+
+This is an interactive CLI, not a bulk import tool. The intent is to make it easy to add one company at a time with prompts and validation, so that data entry doesn't require knowing the schema by heart. It enforces enum values, checks foreign keys in the valuations table, and uses Python's `csv.DictWriter` to ensure empty fields are always serialized correctly (a source of subtle bugs when writing CSV by hand). After running it, always run `csv_to_sqlite.py` to rebuild the database.
+
+### Pipe-separated multi-value fields
+
+Several fields (`sources`, `founder_names`, `founder_wikipedia_urls`, `gov_contracts`) hold multiple values in a single CSV cell, separated by `|`. This is a deliberate trade-off: a proper normalized schema would have junction tables for founders, sources, and government contracts, but that would make the CSVs much harder to read and edit by hand, and the additional complexity isn't worth it at this dataset size. If the dataset grows significantly or the multi-value fields need to be queried individually, splitting them into proper tables would be the right next step.
