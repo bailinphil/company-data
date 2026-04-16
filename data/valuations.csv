@@ -1,0 +1,56 @@
+company_id,date,valuation_usd_billions,valuation_type,round_name,notes,source
+openai,2019-07-22,1.0,funding_round,Series,Microsoft $1B investment,https://en.wikipedia.org/wiki/OpenAI
+openai,2021-01-01,14.0,funding_round,Series,"$1B round led by Khosla, a16z, others",https://en.wikipedia.org/wiki/OpenAI
+openai,2023-01-23,29.0,funding_round,Series,Microsoft $10B investment,https://en.wikipedia.org/wiki/OpenAI
+openai,2024-10-02,157.0,funding_round,Series,"$6.6B round; SoftBank, Tiger Global, others",https://en.wikipedia.org/wiki/OpenAI
+openai,2025-03-01,300.0,funding_round,Series,SoftBank-led round,https://foundationcapital.com/ideas/where-ai-is-headed-in-2026
+openai,2026-03-01,850.0,funding_round,Series,March 2026 financing round,https://www.tldl.io/resources/ai-companies-landscape-2026
+anthropic,2023-04-01,5.0,funding_round,Series C,Google $300M; Spark Capital,https://en.wikipedia.org/wiki/Anthropic
+anthropic,2023-07-01,20.0,funding_round,Series D,$1.25B Amazon first tranche,https://en.wikipedia.org/wiki/Anthropic
+anthropic,2024-03-01,18.4,funding_round,Series E,Google $2B,https://en.wikipedia.org/wiki/Anthropic
+anthropic,2025-09-01,183.0,funding_round,Series F,$13B led by ICONIQ,https://wellows.com/blog/ai-startups/
+anthropic,2026-02-01,380.0,funding_round,Series G,Valuation at time of ~$14B ARR announcement,https://www.tldl.io/resources/ai-companies-landscape-2026
+xai,2024-05-01,24.0,funding_round,Series B,$6B round,https://en.wikipedia.org/wiki/XAI_(company)
+xai,2026-01-01,50.0,funding_round,Series C,"$20B from Nvidia, Cisco, Fidelity",https://wellows.com/blog/ai-startups/
+mistral_ai,2023-06-01,0.26,funding_round,Seed,"€105M seed; Lightspeed, Eric Schmidt",https://en.wikipedia.org/wiki/Mistral_AI
+mistral_ai,2024-06-01,5.8,funding_round,Series A,"€600M; a16z, Lightspeed",https://en.wikipedia.org/wiki/Mistral_AI
+mistral_ai,2025-09-01,14.0,funding_round,Series B,"€2B; ASML (11% stake), MGX Abu Dhabi",https://en.wikipedia.org/wiki/Mistral_AI
+cohere,2022-02-01,2.1,funding_round,Series C,"$270M; Tiger Global, Salesforce",https://en.wikipedia.org/wiki/Cohere_(company)
+cohere,2024-07-01,5.0,funding_round,Series D,"$500M; AMD, Nvidia, Oracle",https://intuitionlabs.ai/articles/cohere-enterprise-ai-llm-profile
+scale_ai,2021-04-01,7.3,funding_round,Series E,$325M; Tiger Global,https://en.wikipedia.org/wiki/Scale_AI
+scale_ai,2024-05-01,13.8,funding_round,Series F,"$1B; Accel, Index, Amazon",https://en.wikipedia.org/wiki/Scale_AI
+databricks,2021-08-01,38.0,funding_round,Series G,$1.6B; Franklin Templeton,https://en.wikipedia.org/wiki/Databricks
+databricks,2023-09-01,43.0,funding_round,Series I,$500M; T. Rowe Price,https://en.wikipedia.org/wiki/Databricks
+databricks,2024-09-01,62.0,funding_round,Series K,$15B raised; Andreessen Horowitz,https://en.wikipedia.org/wiki/Databricks
+perplexity,2024-01-01,0.52,funding_round,Series B,"$73.6M; IVP, NEA",https://en.wikipedia.org/wiki/Perplexity_AI
+perplexity,2024-11-01,9.0,funding_round,Series C,$500M; Institutional Venture Partners,https://en.wikipedia.org/wiki/Perplexity_AI
+perplexity,2025-06-01,20.0,funding_round,Series D,$500M,https://www.tldl.io/resources/ai-companies-landscape-2026
+cursor,2024-08-01,0.4,funding_round,Series A,$60M; a16z,https://www.tldl.io/resources/ai-companies-landscape-2026
+cursor,2025-05-01,2.5,funding_round,Series B,$900M; Thrive Capital,https://www.tldl.io/resources/ai-companies-landscape-2026
+cursor,2026-03-01,50.0,funding_round,Series C,Valuation in reported talks,https://www.tldl.io/resources/ai-companies-landscape-2026
+corweave,2023-04-01,7.0,funding_round,Series B,$221M; Magnetar Capital,https://en.wikipedia.org/wiki/CoreWeave
+corweave,2024-05-01,19.0,funding_round,Series C,"$7.5B; Coatue, Altimeter",https://en.wikipedia.org/wiki/CoreWeave
+corweave,2025-03-28,23.0,ipo,IPO,IPO on Nasdaq at ~$23B market cap,https://en.wikipedia.org/wiki/CoreWeave
+ssi,2024-09-01,5.0,funding_round,Seed,"$1B seed; a16z, Sequoia",https://en.wikipedia.org/wiki/Safe_Superintelligence
+ssi,2025-09-01,32.0,funding_round,Series A,"$2B; DST Global, SV Angel",https://en.wikipedia.org/wiki/Safe_Superintelligence
+hugging_face,2022-05-01,2.0,funding_round,Series C,"$100M; Addition, Lux Capital",https://en.wikipedia.org/wiki/Hugging_Face
+hugging_face,2023-08-01,4.5,funding_round,Series D,"$235M; Google, Amazon, Nvidia, Salesforce",https://en.wikipedia.org/wiki/Hugging_Face
+ai21_labs,2021-10-01,1.4,funding_round,Series B,"$64M; Walden Catalyst, TPY Capital",https://en.wikipedia.org/wiki/AI21_Labs
+ai21_labs,2023-08-01,1.4,funding_round,Series C,"$155M; Google, Nvidia, Intel Capital",https://en.wikipedia.org/wiki/AI21_Labs
+stability_ai,2022-10-01,1.0,funding_round,Series A,"$101M; Coatue, Lightspeed",https://en.wikipedia.org/wiki/Stability_AI
+aleph_alpha,2023-07-01,0.5,funding_round,Series A,"$500M total; Schwarz Gruppe, Bosch Ventures",https://en.wikipedia.org/wiki/Aleph_Alpha
+moonshot_ai,2023-06-01,0.3,funding_round,Seed,"$300M seed; Alibaba, IDG",https://en.wikipedia.org/wiki/Moonshot_AI
+moonshot_ai,2024-02-01,2.5,funding_round,Series A,"$1B; Alibaba, Tencent",https://en.wikipedia.org/wiki/Moonshot_AI
+moonshot_ai,2025-01-01,4.3,funding_round,Series C,"$500M; IDG, Alibaba, Tencent",https://entrepreneurloop.com/moonshot-ai-500m-series-c-funding-ai-infrastructure/
+moonshot_ai,2026-02-01,10.0,funding_round,Series D,Fastest Chinese company to reach decacorn status,https://thechinaacademy.org/kimi-moonshot-ai-becomes-chinas-fastest-decacorn
+zhipu_ai,2023-01-01,0.3,funding_round,Series B,Beijing gov-affiliated fund + VCs; 40B CNY total valuation path,https://www.sahmcapital.com/news/content/zhipu-not-deepseek-is-openais-real-threat
+zhipu_ai,2026-02-01,13.0,market_cap_snapshot,n/a,Hong Kong listed (Knowledge Atlas); ~$13B market cap Feb 2026,https://www.angelone.in/news/global-market/moonshot-ai-backed-by-alibaba
+nvidia,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance NVDA,yfinance
+microsoft,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance MSFT,yfinance
+google_deepmind,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance GOOGL,yfinance
+meta_ai,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance META,yfinance
+palantir,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance PLTR,yfinance
+corweave,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance CRWV,yfinance
+c3ai,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance AI,yfinance
+soundhound,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance SOUN,yfinance
+baidu,2026-04-01,,market_cap_snapshot,n/a,TODO: populate via yfinance BIDU,yfinance
