@@ -1,3 +1,5 @@
+.claude/
+
 # SQLite database — derived from CSVs, rebuilt via csv_to_sqlite.py
 *.db
 *.db-wal
