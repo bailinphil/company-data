@@ -106,6 +106,28 @@ def fetch_market_caps():
     ]
     print(f"Cleared old market_cap_snapshot rows for: {public_ids}\n")
 
+    # Cache exchange rates to avoid redundant fetches (currency -> USD rate)
+    fx_cache = {}
+
+    def get_usd_rate(currency):
+        """Return how many USD one unit of currency is worth. 1.0 for USD."""
+        if currency == 'USD':
+            return 1.0
+        if currency in fx_cache:
+            return fx_cache[currency]
+        fx_ticker = f'{currency}USD=X'
+        try:
+            rate = float(yf.Ticker(fx_ticker).info.get('regularMarketPrice', None))
+        except Exception:
+            rate = None
+        if not rate:
+            print(f"  ✗ Could not fetch exchange rate for {currency}, skipping company.")
+            fx_cache[currency] = None
+        else:
+            print(f"  FX: 1 {currency} = {rate:.6f} USD")
+            fx_cache[currency] = rate
+        return fx_cache[currency]
+
     new_rows = []
     for company in public_cos:
         cid    = company['company_id']
@@ -119,6 +141,11 @@ def fetch_market_caps():
             shares = info.get('sharesOutstanding')
             if not shares:
                 print(f"  ✗ No sharesOutstanding for {ticker}, skipping.")
+                continue
+
+            currency = info.get('currency', 'USD')
+            usd_rate = get_usd_rate(currency)
+            if usd_rate is None:
                 continue
 
             # Fetch daily close prices over the full range
@@ -143,14 +170,18 @@ def fetch_market_caps():
                     matches = hist[hist.index.date == candidate]
                     if not matches.empty:
                         close_price = float(matches['Close'].iloc[0])
-                        market_cap_b = round((close_price * shares) / 1e9, 2)
+                        close_usd = close_price * usd_rate
+                        market_cap_b = round((close_usd * shares) / 1e9, 2)
+                        currency_note = (f' × {usd_rate:.4f} {currency}/USD'
+                                         if currency != 'USD' else '')
                         found = {
                             'company_id':             cid,
                             'date':                   candidate_str,
                             'valuation_usd_billions': market_cap_b,
                             'valuation_type':         'market_cap_snapshot',
                             'round_name':             'n/a',
-                            'notes': (f'{ticker} close ${close_price:.2f} × '
+                            'notes': (f'{ticker} close {close_price:.2f} {currency}'
+                                      f'{currency_note} × '
                                       f'{shares/1e9:.3f}B shares'),
                             'source': f'yfinance/{ticker}',
                         }
