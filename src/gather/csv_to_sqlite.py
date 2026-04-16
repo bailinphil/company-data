@@ -62,10 +62,14 @@ CREATE TABLE companies (
     stock_ticker                 TEXT,
     category_primary             TEXT CHECK(category_primary IN
                                      ('foundation_model','infrastructure','tooling',
-                                      'application','research_lab','hardware')),
+                                      'application','research_lab','hardware',
+                                      'cloud_ai','semiconductor','autonomous_vehicles',
+                                      'robotics')),
     category_secondary           TEXT CHECK(category_secondary IN
                                      ('foundation_model','infrastructure','tooling',
-                                      'application','research_lab','hardware', NULL)),
+                                      'application','research_lab','hardware',
+                                      'cloud_ai','semiconductor','autonomous_vehicles',
+                                      'robotics', NULL)),
     revenue_2025_usd_billions    REAL,
     profit_loss_2025_usd_billions REAL,
     lead_investor_region         TEXT,
