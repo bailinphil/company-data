@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Companies — Interactive Bubble Chart</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>AI Companies</h1>
+    <div class="header-controls">
+      <span id="status" class="status"></span>
+      <button id="theme-toggle" type="button" aria-label="Toggle theme">Light</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="filters" aria-label="Filters">
+      <h2>Filters</h2>
+      <section class="filter-group" data-filter="country">
+        <h3>HQ country</h3>
+        <div class="filter-options"></div>
+      </section>
+      <section class="filter-group" data-filter="public_or_private">
+        <h3>Public / Private</h3>
+        <div class="filter-options"></div>
+      </section>
+      <section class="filter-group" data-filter="category">
+        <h3>Category</h3>
+        <div class="filter-options"></div>
+      </section>
+      <section class="filter-group" data-filter="data_confidence">
+        <h3>Data confidence</h3>
+        <div class="filter-options"></div>
+      </section>
+    </aside>
+
+    <section class="chart-pane" aria-label="Bubble chart">
+      <div class="axis-controls">
+        <div class="axis-selectors">
+          <label>X axis
+            <select id="x-axis" autocomplete="off"></select>
+          </label>
+          <label>Y axis
+            <select id="y-axis" autocomplete="off"></select>
+          </label>
+        </div>
+        <div id="axis-exclusions" class="axis-exclusions"></div>
+      </div>
+      <div id="chart-container">
+        <svg id="chart" role="img" aria-label="AI company bubble chart"></svg>
+      </div>
+    </section>
+
+    <aside class="details" aria-label="Company details">
+      <div id="details-empty" class="details-empty">
+        Click a bubble to see company details.
+      </div>
+      <article id="details-body" hidden></article>
+    </aside>
+  </main>
+
+  <script id="company-data" type="application/json">{{DATA}}</script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
