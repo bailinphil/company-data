@@ -54,7 +54,7 @@ python src/gather/fetch_market_caps.py
 | `hq_city` | string | |
 | `public_or_private` | enum | `public` \| `private` \| `acquired` \| `defunct` |
 | `stock_ticker` | string | Null if private |
-| `category_primary` | enum | `foundation_model` \| `infrastructure` \| `tooling` \| `application` \| `research_lab` \| `hardware` |
+| `category_primary` | enum | `foundation_model` \| `infrastructure` \| `tooling` \| `application` \| `research_lab` \| `hardware` \| `cloud_ai` \| `semiconductor` \| `autonomous_vehicles` \| `robotics` |
 | `category_secondary` | enum | Same options as primary; null if not applicable |
 | `revenue_2025_usd_billions` | float | Most recent known annual revenue; public companies only in most cases |
 | `profit_loss_2025_usd_billions` | float | Positive = profit, negative = loss. Null for most private companies — intentionally, not an oversight |

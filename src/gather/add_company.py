@@ -60,9 +60,13 @@ VALUATIONS_FIELDS = [
 ENUMS = {
     'public_or_private': ['public', 'private', 'acquired', 'defunct'],
     'category_primary':  ['foundation_model', 'infrastructure', 'tooling',
-                          'application', 'research_lab', 'hardware'],
+                          'application', 'research_lab', 'hardware',
+                          'cloud_ai', 'semiconductor', 'autonomous_vehicles',
+                          'robotics'],
     'category_secondary':['foundation_model', 'infrastructure', 'tooling',
-                          'application', 'research_lab', 'hardware', ''],
+                          'application', 'research_lab', 'hardware',
+                          'cloud_ai', 'semiconductor', 'autonomous_vehicles',
+                          'robotics', ''],
     'data_confidence':   ['high', 'medium', 'low'],
 
     'valuation_type':    ['funding_round', 'market_cap_snapshot', 'ipo', 'acquisition'],
