@@ -1,4 +1,6 @@
 # AI Companies Data
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbailinphil%2Fcompany-data.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbailinphil%2Fcompany-data?ref=badge_shield)
+
 
 A structured dataset of artificial intelligence companies worldwide, built to support an interactive infographic for high school students. The goal is to illustrate the size, geography, history, and ownership structure of the AI industry — going well beyond the household names most students already know.
 
@@ -160,3 +162,7 @@ This is an interactive CLI, not a bulk import tool. The intent is to make it eas
 ### Pipe-separated multi-value fields
 
 Several fields (`sources`, `founder_names`, `founder_wikipedia_urls`, `gov_contracts`) hold multiple values in a single CSV cell, separated by `|`. This is a deliberate trade-off: a proper normalized schema would have junction tables for founders, sources, and government contracts, but that would make the CSVs much harder to read and edit by hand, and the additional complexity isn't worth it at this dataset size. If the dataset grows significantly or the multi-value fields need to be queried individually, splitting them into proper tables would be the right next step.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbailinphil%2Fcompany-data.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbailinphil%2Fcompany-data?ref=badge_large)
